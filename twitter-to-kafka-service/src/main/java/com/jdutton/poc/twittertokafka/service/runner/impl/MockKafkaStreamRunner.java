@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
-import com.jdutton.poc.twittertokafka.service.config.TwitterToKafkaServiceConfigData;
+import com.jdutton.poc.config.TwitterToKafkaServiceConfigData;
 import com.jdutton.poc.twittertokafka.service.exception.TwitterToKafkaServiceException;
 import com.jdutton.poc.twittertokafka.service.listener.TwitterKafkaStatusListener;
 import com.jdutton.poc.twittertokafka.service.runner.StreamRunner;

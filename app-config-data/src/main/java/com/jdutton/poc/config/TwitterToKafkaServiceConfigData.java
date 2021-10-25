@@ -1,4 +1,4 @@
-package com.jdutton.poc.twittertokafka.service.config;
+package com.jdutton.poc.config;
 
 import java.util.List;
 
