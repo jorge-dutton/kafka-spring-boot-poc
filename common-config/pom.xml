@@ -7,21 +7,24 @@
 		<artifactId>kafka-spring-boot-poc</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>app-config-data</artifactId>
+	<artifactId>common-config</artifactId>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.jdutton.poc</groupId>
+			<artifactId>app-config-data</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot</artifactId>
 		</dependency>
 		<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-configuration-processor</artifactId>
+			<groupId>org.springframework.retry</groupId>
+			<artifactId>spring-retry</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 	</dependencies>
 </project>
