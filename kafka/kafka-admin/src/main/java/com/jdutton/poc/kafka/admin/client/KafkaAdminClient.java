@@ -2,6 +2,7 @@ package com.jdutton.poc.kafka.admin.client;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
@@ -42,7 +43,6 @@ public class KafkaAdminClient {
 	private final RetryTemplate retryTemplate;
 
 	private final WebClient webClient;
-	
 
 	public KafkaAdminClient(KafkaConfigData kafkaConfigData,
 			RetryConfigData retryConfigData, AdminClient adminClient,
@@ -88,29 +88,29 @@ public class KafkaAdminClient {
 		var maxRetry = retryConfigData.getMaxAttempts();
 		var multiplier = retryConfigData.getMultiplier();
 		var sleepTimeMs = retryConfigData.getSleepTimeMs();
-		while(!getSchemaRegistryStatus().is2xxSuccessful()) {
+		while (!getSchemaRegistryStatus().is2xxSuccessful()) {
 			checkMaxRetry(retryCount++, maxRetry);
 			sleep(sleepTimeMs);
 			sleepTimeMs *= multiplier;
 		}
 	}
-	
+
 	private HttpStatus getSchemaRegistryStatus() {
 
 		try {
 			// @formatter:off
-			return webClient.get()
+			var response = webClient.get()
 					.uri(kafkaConfigData.getSchemaRegistryUrl())
 					.retrieve()
 					.toBodilessEntity()
-					.block()
-					.getStatusCode();
+					.block();
+			return response == null? HttpStatus.INTERNAL_SERVER_ERROR:response.getStatusCode();
 			// @formatter:on
 		} catch (Exception e) {
 			return HttpStatus.SERVICE_UNAVAILABLE;
 		}
 	}
-	
+
 	private void sleep(Long sleepTimeMs) {
 		try {
 			Thread.sleep(sleepTimeMs);
