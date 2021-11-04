@@ -1,22 +1,16 @@
 package com.jdutton.poc.kafka.admin.client;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
-import org.apache.kafka.clients.ClientResponse;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.CreateTopicsResult;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.admin.TopicListing;
-import org.graalvm.compiler.api.replacements.Fold;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.retry.RetryContext;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.stereotype.Component;
@@ -25,8 +19,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.jdutton.poc.config.KafkaConfigData;
 import com.jdutton.poc.config.RetryConfigData;
 import com.jdutton.poc.kafka.admin.exception.KafkaClientException;
-
-import reactor.core.publisher.Mono;
 
 @Component
 public class KafkaAdminClient {
@@ -59,6 +51,7 @@ public class KafkaAdminClient {
 		CreateTopicsResult createTopicsResult;
 		try {
 			createTopicsResult = retryTemplate.execute(this::doCreateTopics);
+			LOG.info("Create topic result {}", createTopicsResult.values().values());
 		} catch (Throwable t) {
 			throw new KafkaClientException(
 					"Reached mx number of retries to create kafka topic(s).");
