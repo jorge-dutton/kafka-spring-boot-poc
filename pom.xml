@@ -25,8 +25,16 @@
 		<avro.version>1.10.0</avro.version>
 		<kafka.version>2.6.2</kafka.version>
 		<retry.version>1.3.0</retry.version>
+		<kafka-avro-serializer.version>5.5.1</kafka-avro-serializer.version>
 	</properties>
-
+	
+	<repositories>
+		<repository>
+			<id>confluent</id>
+			<url>https://packages.confluent.io/maven/</url>
+		</repository>
+	</repositories>
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -38,6 +46,16 @@
 				<groupId>com.jdutton.poc</groupId>
 				<artifactId>common-config</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jdutton.poc</groupId>
+				<artifactId>kafka-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.confluent</groupId>
+				<artifactId>kafka-avro-serializer</artifactId>
+				<version>${kafka-avro-serializer.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
