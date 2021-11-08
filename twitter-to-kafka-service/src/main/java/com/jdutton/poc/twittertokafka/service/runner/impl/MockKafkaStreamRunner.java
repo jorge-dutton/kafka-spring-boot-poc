@@ -87,6 +87,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
 		try {
 			Thread.sleep(sleepTimeMs);
 		} catch (InterruptedException e) {
+			LOG.error("Error sleeping waiting for new status status!", e);
 			throw new TwitterToKafkaServiceException("Error while sleeping for waiting new status to create!!");
 		}
 	}

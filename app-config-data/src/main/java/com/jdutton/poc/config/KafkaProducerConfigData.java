@@ -1,9 +1,8 @@
 package com.jdutton.poc.config;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-
-import lombok.Data;
 
 @Data
 @Configuration
@@ -16,6 +15,6 @@ public class KafkaProducerConfigData {
 	private Integer batchSize;
 	private Integer batchSizeBoostFactor;
 	private Integer lingerMs;
-	private Integer requestTimetoutMs;
+	private Integer requestTimeoutMs;
 	private Integer retryCount;
 }

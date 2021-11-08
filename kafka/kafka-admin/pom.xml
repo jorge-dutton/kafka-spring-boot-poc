@@ -17,6 +17,10 @@
 			<artifactId>app-config-data</artifactId>
 		</dependency>
 		<dependency>
+            <groupId>com.jdutton.poc</groupId>
+            <artifactId>common-config</artifactId>
+        </dependency>
+		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
