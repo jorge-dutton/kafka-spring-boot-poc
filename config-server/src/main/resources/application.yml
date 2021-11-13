@@ -1,0 +1,20 @@
+server:
+  port: '8888'
+spring:
+  application:
+    name: configserver
+  profiles:
+     active: composite
+  cloud:
+    config:
+      server:
+        composite:
+          - type: native
+            search-locations: file:///C:/Users/jorge.dutton/to-delete-workspace/kafka-spring-boot-poc-config/twitter-to-kafka
+        bootstrap: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
