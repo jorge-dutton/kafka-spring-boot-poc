@@ -1,0 +1,20 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jorge-dutton/kafka-spring-boot-poc-config
+          username: jorge-dutton
+          password: W3xa#9exf8mh
+          default-label: main
+          clone-on-start: true
+logging:
+  level:
+    ROOT: INFO
+    org.spring.framework.cloud.config: DEBUG

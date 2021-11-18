@@ -15,7 +15,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - C:\Users\jorge.dutton\to-delete-workspace\kafka-spring-boot-poc\docker-compose\data01:/usr/share/elasticsearch/data
+      - ./data01:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
     networks:
@@ -34,7 +34,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - C:\Users\jorge.dutton\to-delete-workspace\kafka-spring-boot-poc\docker-compose\data02:/usr/share/elasticsearch/data
+      - ./data02:/usr/share/elasticsearch/data
     networks:
       - ${GLOBAL_NETWORK:-elastic}
   elastic-3:
@@ -51,7 +51,7 @@ services:
          soft: -1
          hard: -1
      volumes:
-       - C:\Users\jorge.dutton\to-delete-workspace\kafka-spring-boot-poc\docker-compose\data03:/usr/share/elasticsearch/data
+       - ./data03:/usr/share/elasticsearch/data
      networks:
        - ${GLOBAL_NETWORK:-elastic}
 volumes:

@@ -13,6 +13,10 @@
 		<module>kafka/kafka-producer</module>
 		<module>kafka/kafka-consumer</module>
 		<module>kafka-to-elastic-service</module>
+        <module>elastic</module>
+		<module>elastic/elastic-config</module>
+		<module>elastic/elastic-index-client</module>
+		<module>elastic/elastic-model</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
