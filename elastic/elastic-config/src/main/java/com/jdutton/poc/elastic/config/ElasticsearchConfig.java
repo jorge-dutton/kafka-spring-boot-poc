@@ -13,12 +13,14 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Configuration
-@EnableElasticsearchRepositories(basePackages = "com.jdutton.poc.elastic.index.client.repository" )
+//@Configuration
+//@EnableElasticsearchRepositories(basePackages = "com.jdutton.poc.elastic.index.client.repository" )
 public class ElasticsearchConfig extends AbstractElasticsearchConfiguration {
-    private ElasticConfigData elasticConfigData;
+
+    private final ElasticConfigData elasticConfigData;
 
     public ElasticsearchConfig(ElasticConfigData elasticConfigData) {
+        super();
         this.elasticConfigData = elasticConfigData;
     }
 
@@ -26,8 +28,7 @@ public class ElasticsearchConfig extends AbstractElasticsearchConfiguration {
     @Bean
     public RestHighLevelClient elasticsearchClient() {
         UriComponents serverUri = UriComponentsBuilder
-                .fromHttpUrl(elasticConfigData.getConnectionUrl())
-                .userInfo("elastic:UIryN35bKozUTDwCnyEdY0lv").build();
+                .fromHttpUrl(elasticConfigData.getConnectionUrl()).build();
         return new RestHighLevelClient(
                 RestClient.builder(new HttpHost(
                 serverUri.getHost(),
@@ -44,7 +45,7 @@ public class ElasticsearchConfig extends AbstractElasticsearchConfiguration {
     }
 
     @Bean
-    public ElasticsearchOperations elasticsearchTemplate() {
+    public ElasticsearchOperations elasticsearchOperations() {
         return new ElasticsearchRestTemplate(elasticsearchClient());
     }
 }

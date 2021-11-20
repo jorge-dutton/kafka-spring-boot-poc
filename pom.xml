@@ -14,9 +14,6 @@
 		<module>kafka/kafka-consumer</module>
 		<module>kafka-to-elastic-service</module>
         <module>elastic</module>
-		<module>elastic/elastic-config</module>
-		<module>elastic/elastic-index-client</module>
-		<module>elastic/elastic-model</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -44,7 +41,7 @@
 		<spring-cloud-dependecy.version>2020.0.4</spring-cloud-dependecy.version>
 		<spring-cloud.version>3.0.5</spring-cloud.version>
 		<jasypt.version>3.0.4</jasypt.version>
-		<elasticsearch.version>7.9.1</elasticsearch.version>
+		<elasticsearch.version>7.12.1</elasticsearch.version>
 	</properties>
 
 	<repositories>
@@ -59,6 +56,16 @@
 			<dependency>
 				<groupId>com.jdutton.poc</groupId>
 				<artifactId>elastic-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jdutton.poc</groupId>
+				<artifactId>elastic-config</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jdutton.poc</groupId>
+				<artifactId>elastic-index-client</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

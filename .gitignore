@@ -5,6 +5,8 @@ target/
 !**/src/test/**/target/
 **/*.log
 playground/
+docker-compose/data*/
+docker-compose/docker-logs/
 
 ### STS ###
 .apt_generated

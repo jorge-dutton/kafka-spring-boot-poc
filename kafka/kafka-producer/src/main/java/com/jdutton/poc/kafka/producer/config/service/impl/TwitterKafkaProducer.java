@@ -2,6 +2,7 @@ package com.jdutton.poc.kafka.producer.config.service.impl;
 
 import javax.annotation.PreDestroy;
 
+import com.jdutton.poc.config.ElasticConfigData;
 import com.jdutton.poc.kafka.avro.model.TwitterAvroModel;
 import com.jdutton.poc.kafka.producer.config.service.KafkaProducer;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -19,7 +20,7 @@ public class TwitterKafkaProducer implements KafkaProducer<Long, TwitterAvroMode
 
     private static final Logger LOG = LoggerFactory.getLogger(TwitterKafkaProducer.class);
 
-    private KafkaTemplate<Long, TwitterAvroModel> kafkaTemplate;
+    private final KafkaTemplate<Long, TwitterAvroModel> kafkaTemplate;
 
     public TwitterKafkaProducer(KafkaTemplate<Long, TwitterAvroModel> template) {
         this.kafkaTemplate = template;

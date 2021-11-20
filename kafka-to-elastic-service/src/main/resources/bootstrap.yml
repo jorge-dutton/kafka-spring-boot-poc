@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: kafka-to-elastic-service
+  config:
+    import: optional:configserver:http://localhost:8888
+  cloud:
+    config:
+      allow-override: true
+      override-none: true
